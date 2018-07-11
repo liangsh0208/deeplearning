@@ -16,6 +16,16 @@ repeat{
   if(epe[i+1]<0.01){
     print("finish:");
     print(w);
+    break;
+  }
+  w<- w+a*(d-y)%*%t(p);
+  i<- i+1
+  if(i > max){
+    print("max time loop");
+    print(eps[i]);
+    print(y);
+    break;
   }
 }
+
   
