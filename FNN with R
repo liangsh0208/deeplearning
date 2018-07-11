@@ -11,21 +11,29 @@ i<- 0
 repeat{
   v<- w%*%p;
   y<- ifelse(sign(v)>=0,1,0);
-  e< -d-y;
+  e<- d-y;
   eps[i+1]<- sum(abs(e))/length(e)
-  if(epe[i+1]<0.01){
+  if(eps[i+1]<0){
     print("finish:");
     print(w);
     break;
   }
   w<- w+a*(d-y)%*%t(p);
   i<- i+1
-  if(i > max){
+  if(i > 100){
     print("max time loop");
     print(eps[i]);
     print(y);
     break;
   }
 }
+plot(Petal.Length~Petal.Width,xlim=c(0,3),ylim=c(0,8),data=iris[iris$Species=="virginica",])
+data1<- iris[iris$Species == "versicolor",]
+points(data1$Petal.Width,data1$Petal.Length,col=2)
+data2<- iris[iris$Species=="setosa",]
+points(data2$Petal.Width,data2$Petal.Length,col=3)
+x<- seq(0,3,0.01)
+y<- x*(-w[2]/w[3]) - w[1]/w[3]
+lines(x,y,col=4)
 
-  
+plot(1:i,eps[1:i],type = "o")
