@@ -1,0 +1,21 @@
+str(iris)
+a<- 0.2
+w<- rep(0,3)
+iris1<- t(as.matrix(iris[,3:4]))
+d<- c(rep(0,50),rep(1,100))
+e<- rep(0,150)
+p<- rbind(rep(1,150),iris1)
+max<- 100000
+eps<- rep(0,100000)
+i<- 0
+repeat{
+  v<- w%*%p;
+  y<- ifelse(sign(v)>=0,1,0);
+  e< -d-y;
+  eps[i+1]<- sum(abs(e))/length(e)
+  if(epe[i+1]<0.01){
+    print("finish:");
+    print(w);
+  }
+}
+  
